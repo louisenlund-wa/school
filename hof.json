@@ -43,7 +43,7 @@
                 {
                  "name":"exitUrl",
                  "type":"string",
-                 "value":"\/schloss.json"
+                 "value":"https:\/\/play.workadventu.re\/_\/global\/jaffaya.github.io\/school\/schloss.json#hof"
                 }],
          "type":"tilelayer",
          "visible":true,
