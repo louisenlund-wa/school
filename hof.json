@@ -61,7 +61,7 @@
                 {
                  "name":"exitUrl",
                  "type":"string",
-                 "value":"\/schloss.json#hof"
+                 "value":"schloss.json#hof"
                 }],
          "type":"tilelayer",
          "visible":true,
