@@ -444,7 +444,7 @@
          "height":99,
          "id":34,
          "name":"iframe_castle",
-         "opacity":0.53,
+         "opacity":0,
          "properties":[
                 {
                  "name":"openWebsite",
