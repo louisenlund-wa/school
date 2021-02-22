@@ -385,6 +385,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/www.theasys.io\/viewer\/9kmLnH9mGZXk2yNuWjNpRhXMy9KYZM\/"
+                }, 
+                {
+                 "name":"openWebsitePolicy",
+                 "type":"string",
+                 "value":"fullscreen"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -403,6 +408,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/www.theasys.io\/viewer\/fPqLRb85HB5jWDKTEIqz1VfWnNyB1t\/"
+                }, 
+                {
+                 "name":"openWebsitePolicy",
+                 "type":"string",
+                 "value":"fullscreen"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -421,6 +431,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/www.theasys.io\/viewer\/RasQNfQMjSyBm5V8Ssjll8lfpc8miK\/"
+                }, 
+                {
+                 "name":"openWebsitePolicy",
+                 "type":"string",
+                 "value":"fullscreen"
                 }],
          "type":"tilelayer",
          "visible":true,
