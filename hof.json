@@ -416,6 +416,12 @@
          "id":33,
          "name":"iframe_speisesaal",
          "opacity":0,
+         "properties":[
+                {
+                 "name":"openWebsite",
+                 "type":"string",
+                 "value":"https:\/\/www.theasys.io\/viewer\/RasQNfQMjSyBm5V8Ssjll8lfpc8miK\/"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":75,
@@ -427,12 +433,17 @@
          "height":75,
          "id":34,
          "name":"iframe_farm",
-         "opacity":0.44,
+         "opacity":0,
          "properties":[
                 {
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/www.theasys.io\/viewer\/HB779B1EQgjDuex8diPlzhXaMBXMdi\/"
+                }, 
+                {
+                 "name":"openWebsitePolicy",
+                 "type":"string",
+                 "value":"fullscreen"
                 }],
          "type":"tilelayer",
          "visible":true,
