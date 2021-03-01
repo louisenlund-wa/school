@@ -462,7 +462,7 @@
          "height":75,
          "id":15,
          "name":"colision",
-         "opacity":0.6,
+         "opacity":0,
          "type":"tilelayer",
          "visible":true,
          "width":75,
@@ -485,6 +485,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"openWebsiteTrigger",
+                 "type":"string",
+                 "value":"onaction"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -508,6 +513,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"openWebsiteTrigger",
+                 "type":"string",
+                 "value":"onaction"
                 }],
          "type":"tilelayer",
          "visible":true,
