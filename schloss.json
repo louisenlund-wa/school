@@ -218,7 +218,7 @@
          "height":99,
          "id":43,
          "name":"build_test",
-         "opacity":0.58,
+         "opacity":0,
          "type":"tilelayer",
          "visible":true,
          "width":200,
