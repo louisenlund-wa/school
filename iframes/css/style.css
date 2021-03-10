@@ -78,7 +78,7 @@ footer{
 	width: 50px;
 	height: 50px;
 	top: calc( 50% - 25px );
-	background-color: #eeeeee50;
+	background-color: #eeeeeeaa;
 	border-radius: 50%;
 	cursor: pointer;
 }
