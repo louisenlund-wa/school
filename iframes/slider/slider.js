@@ -1,6 +1,26 @@
 addEventListener("DOMContentLoaded", function () {
     var sliderElem = document.querySelector('.slider');
-    var slider = new Slider(sliderElem);
+    //waiting for load img
+    var slides = sliderElem.querySelectorAll('.slide');
+    var allLoaded = false;
+    var slider = false;
+    for(var i=0; i < slides.length; i++){
+        slides[i].onload = function() {
+            this.loaded = true;
+            for(var i=0; i < slides.length; i++){
+                allLoaded = slides[i].loaded;
+                if(!slides[i].loaded){
+                    allLoaded = false;
+                    break;
+                }
+                //make slider
+                if(slider === false){
+                    slider = new Slider(sliderElem);
+                }
+            }
+        }
+    }
+    
 });
 
 //class Slider
