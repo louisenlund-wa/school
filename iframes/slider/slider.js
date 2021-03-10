@@ -13,10 +13,10 @@ addEventListener("DOMContentLoaded", function () {
                     allLoaded = false;
                     break;
                 }
-                //make slider
-                if(slider === false){
-                    slider = new Slider(sliderElem);
-                }
+            }
+            //make slider
+            if(slider === false && allLoaded){
+                slider = new Slider(sliderElem);
             }
         }
     }
