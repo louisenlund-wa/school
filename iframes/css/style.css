@@ -50,7 +50,7 @@ footer{
 .slider{
 	height: 400px;
 	width: 100%;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 .slider img{
 	object-fit: contain;
