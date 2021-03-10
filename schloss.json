@@ -612,12 +612,12 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"iframes\/Schleiwasser-Forschungsprojekt.html"
+                 "value":"https:\/\/jaffaya.github.io\/school\/iframes\/Schleiwasser-Forschungsprojekt.html"
                 }, 
                 {
                  "name":"openWebsiteTrigger",
                  "type":"string",
-                 "value":"fullscreen"
+                 "value":"onaction"
                 }],
          "type":"tilelayer",
          "visible":true,
