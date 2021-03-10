@@ -27,6 +27,9 @@ main{
 main h1{
 	line-height: 1.3em;
 }
+main video{
+	width: 100%;
+}
 main a{
 	color: #cd1329;
 	border-bottom-color: rgba(205,19,41,.3);
