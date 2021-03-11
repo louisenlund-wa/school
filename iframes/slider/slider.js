@@ -35,7 +35,7 @@ function Slider(sliderElem){
     var sizing = false || 'no';// no || contain || cover
     var pnButtons = true || false;
     var pnButCycle = true || false;
-    var contentButtunFlag = false;
+    var contentButtunFlag = true || false;
     var animTime = 0.5;
 
     if(!slides) return null;
@@ -58,6 +58,8 @@ function Slider(sliderElem){
         for(var i=0; i < slides.length; i++){
             contentButtuns.push( createContentButtun(contentButtunsContainer, i) );
         }
+        //set active first button
+        contentButtuns[0].classList.add("active");
     }
 
     setStyle(this);
@@ -72,7 +74,7 @@ function Slider(sliderElem){
 
     function createContentButtun(cbContainer, iterator){
         var contentButtun = document.createElement('div');
-        contentButtun.className = 'sliderButton sliderContentButtun';
+        contentButtun.className = 'sliderContentButtun';
         cbContainer.append(contentButtun);
         contentButtun.addEventListener('click', function(e){
             setActiveSlide(iterator);
@@ -111,9 +113,10 @@ function Slider(sliderElem){
             }else if(sizing == 'no'){
                 currentDiff = Math.abs(slides[i].postionLeft - parseFloat(position));
                 centerPosition = sliderElem.offsetWidth/2 - slides[i].offsetWidth/2;
-                currentDiff += centerPosition;
+                currentDiff -= centerPosition;
+                currentDiff = Math.abs(currentDiff);
             }
-            if( currentDiff <= (diff+centerPosition) ){
+            if( currentDiff <= (diff) ){
                 diff = currentDiff;
                 nearestSlide = slides[i];
             }
@@ -215,6 +218,13 @@ function Slider(sliderElem){
                 }
             }
             container.style.marginLeft = centerPosition+'px';
+        }
+        //set contentButtun if active
+        if(contentButtunFlag && contentButtuns){
+            for(var i=0; i < contentButtuns.length; i++){
+                contentButtuns[i].classList.remove("active");
+            }
+            contentButtuns[slideNumber].classList.add("active");
         }
     }
 
