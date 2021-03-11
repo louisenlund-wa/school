@@ -27,8 +27,10 @@ main{
 main h1{
 	line-height: 1.3em;
 }
-main video{
-	width: 100%;
+main .youtube{
+	height: 25vw;
+    width: 100%;
+    min-height: 350px;
 }
 main a{
 	color: #cd1329;
