@@ -4017,19 +4017,6 @@
          "tilecount":36,
          "tileheight":32,
          "tilewidth":32
-        }, 
-        {
-         "columns":4,
-         "firstgid":31952,
-         "image":"assets\/signs\/Tribune-smaller.png",
-         "imageheight":128,
-         "imagewidth":128,
-         "margin":0,
-         "name":"Tribune-smaller",
-         "spacing":0,
-         "tilecount":16,
-         "tileheight":32,
-         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
