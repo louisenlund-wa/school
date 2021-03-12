@@ -18,10 +18,40 @@ addEventListener("DOMContentLoaded", function () {
             if(slider === false && allLoaded){
                 slider = new Slider(sliderElem);
             }
+        };
+        slides[i].onerror = function() {
+            this.loaded = true;
+            for(var i=0; i < slides.length; i++){
+                allLoaded = slides[i].loaded;
+                if(!slides[i].loaded){
+                    allLoaded = false;
+                    break;
+                }
+            }
+            //make slider
+            if(slider === false && allLoaded){
+                slider = new Slider(sliderElem);
+            }
+        };
+
+        function preloadImages(sources, callback) {
+          let counter = 0;
+
+          function onLoad() {
+            counter++;
+            if (counter == sources.length) callback();
+          }
+
+          for(let source of sources) {
+            let img = document.createElement('img');
+            img.onload = img.onerror = onLoad;
+            img.src = source;
+          }
         }
     }
     
 });
+
 
 //class Slider
 function Slider(sliderElem){
