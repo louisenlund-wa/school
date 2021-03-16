@@ -1,56 +1,63 @@
+(function() {
+    var throttle = function(type, name, obj) {
+        obj = obj || window;
+        var running = false;
+        var func = function() {
+            if (running) { return; }
+            running = true;
+             requestAnimationFrame(function() {
+                obj.dispatchEvent(new CustomEvent(name));
+                running = false;
+            });
+        };
+        obj.addEventListener(type, func);
+    };
+
+    /* init - you can init any event */
+    throttle("resize", "optimizedResize");
+})();
+
 addEventListener("DOMContentLoaded", function () {
-    var sliderElem = document.querySelector('.slider');
-    //waiting for load img
-    var slides = sliderElem.querySelectorAll('.slide');
-    var allLoaded = false;
-    var slider = false;
-    for(var i=0; i < slides.length; i++){
-        slides[i].onload = function() {
-            this.loaded = true;
-            for(var i=0; i < slides.length; i++){
-                allLoaded = slides[i].loaded;
-                if(!slides[i].loaded){
-                    allLoaded = false;
-                    break;
-                }
-            }
-            //make slider
-            if(slider === false && allLoaded){
-                slider = new Slider(sliderElem);
-            }
-        };
-        slides[i].onerror = function() {
-            this.loaded = true;
-            for(var i=0; i < slides.length; i++){
-                allLoaded = slides[i].loaded;
-                if(!slides[i].loaded){
-                    allLoaded = false;
-                    break;
-                }
-            }
-            //make slider
-            if(slider === false && allLoaded){
-                slider = new Slider(sliderElem);
-            }
-        };
 
-        function preloadImages(sources, callback) {
-          let counter = 0;
-
-          function onLoad() {
-            counter++;
-            if (counter == sources.length) callback();
-          }
-
-          for(let source of sources) {
-            let img = document.createElement('img');
-            img.onload = img.onerror = onLoad;
-            img.src = source;
-          }
-        }
-    }
+    makeSlider();
     
 });
+
+//preload images
+function makeSlider(sliderSelector = '.slider'){
+    var sliderElem = document.querySelector(sliderSelector);
+    var slider = false;
+    var imgSources = [];
+    var imgs = sliderElem.querySelectorAll('img');
+    
+    if(imgs.length > 0){
+        //preload images
+        for(var i=0; i < imgs.length; i++){
+            imgSources.push(imgs[i].src);
+        }
+        preloadImages(imgSources);
+    }else{
+        //just try to run slider
+        slider = new Slider(sliderElem);
+    }
+
+    function preloadImages(sources){
+        var counter = 0;
+
+        function onLoad() {
+            counter++;
+            if (counter == sources.length){
+                slider = new Slider(sliderElem);
+            }
+        }
+
+        for(var i=0; i < sources.length; i++){
+            var img = document.createElement('img');
+            img.onload = img.onerror = onLoad;
+            img.src = sources[i];
+        }
+    }
+}
 
 
 //class Slider
@@ -72,10 +79,6 @@ function Slider(sliderElem){
 
     this.setCustomStyles = function(){};
 
-    resizeSlider();
-
-    reattachSlidesToContainer();
-
     if(pnButtons){
         var prevButton = null;
         var nextButton = null;
@@ -93,6 +96,13 @@ function Slider(sliderElem){
     }
 
     setStyle(this);
+
+    resizeSlider();
+
+    // handle event
+    window.addEventListener("optimizedResize", resizeSlider);
+
+    reattachSlidesToContainer();
 
 
     function createContentButtunsContainer(){
@@ -349,13 +359,18 @@ function Slider(sliderElem){
     }
 
     function getSlidesLength(){
+        slidesLenghs = 0;
         for(var i=0; i < slides.length; i++){
-            slidesLenghs += slides[i].offsetWidth;
+            // slidesLenghs += slides[i].offsetWidth;
+            slidesLenghs += slides[i].width;
         }
     }
 
     function resizeSlider(){
+        sliderElem.style.removeProperty('width');
         for(var i=0; i < slides.length; i++){
+            slides[i].style.removeProperty('width');
+            slides[i].style.removeProperty('height');
             slides[i].style.width = slides[i].offsetWidth+'px';
             slides[i].style.height = slides[i].offsetHeight+'px';
         }
@@ -363,6 +378,47 @@ function Slider(sliderElem){
         getSlidesLength();
         container.style.width = slidesLenghs+'px';
         container.style.height = sliderElem.offsetHeight+'px';
+        hideSliderOnResize();
+    }
+
+    function hideSliderOnResize(){
+        if(sizing == 'contain' || sizing == 'cover'){
+            if(slides.length <= 1){
+                hideControls();
+                //autoplay stop
+            }else{
+                hideControls(false);
+            }
+        }else if(sizing == 'no'){
+            if(sliderElem.offsetWidth >= slidesLenghs){
+                hideControls();
+                //autoplay stop
+                //centred slides
+                container.style.marginLeft = (sliderElem.offsetWidth - slidesLenghs) / 2 + 'px';
+            }else{
+                hideControls(false);
+            }
+        }
+    }
+
+    function hideControls(hide = true){
+        if(pnButtons){
+            if(hide){
+                prevButton.classList.remove('show');
+                nextButton.classList.remove('show');
+            }else{
+                prevButton.classList.add('show');
+                nextButton.classList.add('show');
+            }
+        } 
+        if(contentButtunFlag){
+            if(hide){
+                contentButtunsContainer.classList.remove('show');
+            }else{
+                contentButtunsContainer.classList.add('show');
+            }
+            
+        }
     }
 
     function reattachSlidesToContainer(){
