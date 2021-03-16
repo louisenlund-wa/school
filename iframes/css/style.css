@@ -68,6 +68,8 @@ footer{
 	bottom: 4%;
 	left: 50%;
 	transform: translateX(-50%);
+	visibility: hidden;
+	opacity: 0;
 }
 .sliderContentButtun{
     position: unset;
@@ -92,6 +94,8 @@ footer{
 	background-color: #eeeeeeaa;
 	border-radius: 50%;
 	cursor: pointer;
+	visibility: hidden;
+	opacity: 0;
 }
 .sliderButton:before, .sliderButton:after{
 	content: '';
@@ -146,4 +150,10 @@ footer{
 @keyframes sliderButonsRevers {
 	from { transform: rotate(-45deg); }
 	to { transform: rotate(-225deg); } 
+}
+.sliderButton.show,
+.sliderContentButtunsContainer.show{
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.3s;
 }
