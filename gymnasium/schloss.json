@@ -730,7 +730,7 @@
          "height":99,
          "id":54,
          "name":"iframe_info_THW",
-         "opacity":0.44,
+         "opacity":0,
          "properties":[
                 {
                  "name":"openWebsite",
@@ -738,7 +738,7 @@
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/THW.html"
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":200,
          "x":0,
          "y":0
