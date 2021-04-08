@@ -162,7 +162,7 @@
         {
          "columns":16,
          "firstgid":1,
-         "image":"assets\/Victorian Town Decorations\/terrain-map.png",
+         "image":"..\/assets\/Victorian Town Decorations\/terrain-map.png",
          "imageheight":8320,
          "imagewidth":512,
          "margin":0,
@@ -185,7 +185,7 @@
         {
          "columns":32,
          "firstgid":4161,
-         "image":"assets\/Victorian Town Decorations\/bricks.png",
+         "image":"..\/assets\/Victorian Town Decorations\/bricks.png",
          "imageheight":2048,
          "imagewidth":1024,
          "margin":0,
@@ -198,7 +198,7 @@
         {
          "columns":16,
          "firstgid":6209,
-         "image":"assets\/Victorian Town Decorations\/container.png",
+         "image":"..\/assets\/Victorian Town Decorations\/container.png",
          "imageheight":2048,
          "imagewidth":512,
          "margin":0,
@@ -211,7 +211,7 @@
         {
          "columns":32,
          "firstgid":7233,
-         "image":"assets\/Victorian Town Decorations\/food.png",
+         "image":"..\/assets\/Victorian Town Decorations\/food.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -224,7 +224,7 @@
         {
          "columns":64,
          "firstgid":8257,
-         "image":"assets\/Victorian Town Decorations\/roofs.png",
+         "image":"..\/assets\/Victorian Town Decorations\/roofs.png",
          "imageheight":2048,
          "imagewidth":2048,
          "margin":0,
@@ -237,7 +237,7 @@
         {
          "columns":32,
          "firstgid":12353,
-         "image":"assets\/Victorian Town Decorations\/trees-green.png",
+         "image":"..\/assets\/Victorian Town Decorations\/trees-green.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -250,7 +250,7 @@
         {
          "columns":32,
          "firstgid":13377,
-         "image":"assets\/Victorian Town Decorations\/victorian-accessories.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-accessories.png",
          "imageheight":2560,
          "imagewidth":1024,
          "margin":0,
@@ -263,7 +263,7 @@
         {
          "columns":16,
          "firstgid":15937,
-         "image":"assets\/Victorian Town Decorations\/victorian-garden.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-garden.png",
          "imageheight":2048,
          "imagewidth":512,
          "margin":0,
@@ -276,7 +276,7 @@
         {
          "columns":32,
          "firstgid":16961,
-         "image":"assets\/Victorian Town Decorations\/victorian-mansion.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-mansion.png",
          "imageheight":2048,
          "imagewidth":1024,
          "margin":0,
@@ -289,7 +289,7 @@
         {
          "columns":16,
          "firstgid":19009,
-         "image":"assets\/Victorian Town Decorations\/victorian-market.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-market.png",
          "imageheight":2560,
          "imagewidth":512,
          "margin":0,
@@ -302,7 +302,7 @@
         {
          "columns":16,
          "firstgid":20289,
-         "image":"assets\/Victorian Town Decorations\/victorian-streets.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-streets.png",
          "imageheight":3072,
          "imagewidth":512,
          "margin":0,
@@ -315,7 +315,7 @@
         {
          "columns":32,
          "firstgid":21825,
-         "image":"assets\/Victorian Town Decorations\/victorian-tenement.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-tenement.png",
          "imageheight":3072,
          "imagewidth":1024,
          "margin":0,
@@ -328,7 +328,7 @@
         {
          "columns":32,
          "firstgid":24897,
-         "image":"assets\/Victorian Town Decorations\/victorian-windows-doors.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-windows-doors.png",
          "imageheight":5120,
          "imagewidth":1024,
          "margin":0,
@@ -341,7 +341,7 @@
         {
          "columns":32,
          "firstgid":30017,
-         "image":"assets\/Victorian Town Decorations\/windows-doors.png",
+         "image":"..\/assets\/Victorian Town Decorations\/windows-doors.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,

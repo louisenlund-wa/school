@@ -438,7 +438,7 @@
                 {
                  "name":"playAudioLoop",
                  "type":"string",
-                 "value":"assets\/llund v\u00f6gel 1.mp3"
+                 "value":"..\/assets\/llund v\u00f6gel 1.mp3"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -456,7 +456,7 @@
                 {
                  "name":"playAudioLoop",
                  "type":"string",
-                 "value":"assets\/LL_wasserundv\u00f6gel.mp3"
+                 "value":"..\/assets\/LL_wasserundv\u00f6gel.mp3"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -622,7 +622,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Schleiwasser-Forschungsprojekt.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/Schleiwasser-Forschungsprojekt.html"
                 }, 
                 {
                  "name":"openWebsiteTrigger",
@@ -645,7 +645,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Schleiwasser-Forschungsprojekt-track.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/Schleiwasser-Forschungsprojekt-track.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -663,7 +663,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Sch\u00fclerwettbewerbe.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/Sch\u00fclerwettbewerbe.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -681,7 +681,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Robocup.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/Robocup.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -699,7 +699,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/plus-MINT-unterwegs.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/plus-MINT-unterwegs.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -717,7 +717,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Abschlussjahrgang.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/Abschlussjahrgang.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -735,7 +735,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/THW.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/THW.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -753,7 +753,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/plus-MINT_Video_der_Film.html"
+                 "value":"https:\/\/louisenlund-wa.github.io\/school\/firstEvent\/iframes\/plus-MINT_Video_der_Film.html"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -807,7 +807,7 @@
         {
          "columns":16,
          "firstgid":1,
-         "image":"assets\/Victorian Town Decorations\/terrain-map.png",
+         "image":"..\/assets\/Victorian Town Decorations\/terrain-map.png",
          "imageheight":8320,
          "imagewidth":512,
          "margin":0,
@@ -839,7 +839,7 @@
         {
          "columns":16,
          "firstgid":4161,
-         "image":"assets\/Victorian Town Decorations\/victorian-garden.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-garden.png",
          "imageheight":2048,
          "imagewidth":512,
          "margin":0,
@@ -852,7 +852,7 @@
         {
          "columns":16,
          "firstgid":5185,
-         "image":"assets\/Victorian Town Decorations\/victorian-streets.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-streets.png",
          "imageheight":3072,
          "imagewidth":512,
          "margin":0,
@@ -865,7 +865,7 @@
         {
          "columns":32,
          "firstgid":6721,
-         "image":"assets\/Victorian Town Decorations\/windows-doors.png",
+         "image":"..\/assets\/Victorian Town Decorations\/windows-doors.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -878,7 +878,7 @@
         {
          "columns":32,
          "firstgid":7745,
-         "image":"assets\/Victorian Town Decorations\/victorian-windows-doors.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-windows-doors.png",
          "imageheight":5120,
          "imagewidth":1024,
          "margin":0,
@@ -891,7 +891,7 @@
         {
          "columns":32,
          "firstgid":12865,
-         "image":"assets\/Victorian Town Decorations\/victorian-tenement.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-tenement.png",
          "imageheight":3072,
          "imagewidth":1024,
          "margin":0,
@@ -904,7 +904,7 @@
         {
          "columns":16,
          "firstgid":15937,
-         "image":"assets\/Victorian Town Decorations\/victorian-market.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-market.png",
          "imageheight":2560,
          "imagewidth":512,
          "margin":0,
@@ -917,7 +917,7 @@
         {
          "columns":32,
          "firstgid":17217,
-         "image":"assets\/Victorian Town Decorations\/victorian-mansion.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-mansion.png",
          "imageheight":2048,
          "imagewidth":1024,
          "margin":0,
@@ -930,7 +930,7 @@
         {
          "columns":32,
          "firstgid":19265,
-         "image":"assets\/Victorian Town Decorations\/victorian-accessories.png",
+         "image":"..\/assets\/Victorian Town Decorations\/victorian-accessories.png",
          "imageheight":2560,
          "imagewidth":1024,
          "margin":0,
@@ -943,7 +943,7 @@
         {
          "columns":32,
          "firstgid":21825,
-         "image":"assets\/Victorian Town Decorations\/trees-green.png",
+         "image":"..\/assets\/Victorian Town Decorations\/trees-green.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -1002,7 +1002,7 @@
         {
          "columns":64,
          "firstgid":22849,
-         "image":"assets\/Victorian Town Decorations\/roofs.png",
+         "image":"..\/assets\/Victorian Town Decorations\/roofs.png",
          "imageheight":2048,
          "imagewidth":2048,
          "margin":0,
@@ -1015,7 +1015,7 @@
         {
          "columns":32,
          "firstgid":26945,
-         "image":"assets\/Victorian Town Decorations\/food.png",
+         "image":"..\/assets\/Victorian Town Decorations\/food.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -1028,7 +1028,7 @@
         {
          "columns":16,
          "firstgid":27969,
-         "image":"assets\/Victorian Town Decorations\/container.png",
+         "image":"..\/assets\/Victorian Town Decorations\/container.png",
          "imageheight":2048,
          "imagewidth":512,
          "margin":0,
@@ -1041,7 +1041,7 @@
         {
          "columns":32,
          "firstgid":28993,
-         "image":"assets\/Victorian Town Decorations\/bricks.png",
+         "image":"..\/assets\/Victorian Town Decorations\/bricks.png",
          "imageheight":2048,
          "imagewidth":1024,
          "margin":0,
@@ -1054,7 +1054,7 @@
         {
          "columns":2,
          "firstgid":31041,
-         "image":"assets\/sun-watch.png",
+         "image":"..\/assets\/sun-watch.png",
          "imageheight":64,
          "imagewidth":64,
          "margin":0,
@@ -1095,7 +1095,7 @@
         {
          "columns":9,
          "firstgid":31045,
-         "image":"assets\/boats\/PNG\/32x32\/boat.png",
+         "image":"..\/assets\/boats\/PNG\/32x32\/boat.png",
          "imageheight":288,
          "imagewidth":288,
          "margin":0,
@@ -1108,7 +1108,7 @@
         {
          "columns":3,
          "firstgid":31126,
-         "image":"assets\/cars\/cars.png",
+         "image":"..\/assets\/cars\/cars.png",
          "imageheight":672,
          "imagewidth":96,
          "margin":0,
@@ -1689,7 +1689,7 @@
         {
          "columns":3,
          "firstgid":31189,
-         "image":"assets\/white-gate-center.png",
+         "image":"..\/assets\/white-gate-center.png",
          "imageheight":96,
          "imagewidth":96,
          "margin":0,
@@ -1702,7 +1702,7 @@
         {
          "columns":3,
          "firstgid":31198,
-         "image":"assets\/net.png",
+         "image":"..\/assets\/net.png",
          "imageheight":64,
          "imagewidth":96,
          "margin":0,
@@ -1715,7 +1715,7 @@
         {
          "columns":3,
          "firstgid":31204,
-         "image":"assets\/signs\/signa.png",
+         "image":"..\/assets\/signs\/signa.png",
          "imageheight":2816,
          "imagewidth":96,
          "margin":0,
@@ -3943,7 +3943,7 @@
         {
          "columns":6,
          "firstgid":31468,
-         "image":"assets\/wide-windiws.png",
+         "image":"..\/assets\/wide-windiws.png",
          "imageheight":160,
          "imagewidth":192,
          "margin":0,
@@ -3956,7 +3956,7 @@
         {
          "columns":18,
          "firstgid":31498,
-         "image":"assets\/round-buidl.png",
+         "image":"..\/assets\/round-buidl.png",
          "imageheight":546,
          "imagewidth":576,
          "margin":0,
@@ -3969,7 +3969,7 @@
         {
          "columns":4,
          "firstgid":31804,
-         "image":"assets\/signs\/Tribune.png",
+         "image":"..\/assets\/signs\/Tribune.png",
          "imageheight":256,
          "imagewidth":128,
          "margin":0,
@@ -3982,7 +3982,7 @@
         {
          "columns":6,
          "firstgid":31836,
-         "image":"assets\/signs\/road-signs.png",
+         "image":"..\/assets\/signs\/road-signs.png",
          "imageheight":96,
          "imagewidth":192,
          "margin":0,
@@ -3995,7 +3995,7 @@
         {
          "columns":2,
          "firstgid":31854,
-         "image":"assets\/signs\/event-stands.png",
+         "image":"..\/assets\/signs\/event-stands.png",
          "imageheight":640,
          "imagewidth":64,
          "margin":0,
@@ -4008,7 +4008,7 @@
         {
          "columns":32,
          "firstgid":31894,
-         "image":"assets\/houses.png",
+         "image":"..\/assets\/houses.png",
          "imageheight":1024,
          "imagewidth":1024,
          "margin":0,
@@ -4021,7 +4021,7 @@
         {
          "columns":6,
          "firstgid":32918,
-         "image":"assets\/signs\/event.png",
+         "image":"..\/assets\/signs\/event.png",
          "imageheight":576,
          "imagewidth":192,
          "margin":0,
