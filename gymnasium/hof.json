@@ -643,7 +643,7 @@
          "name":"placement_outline_juniorenstufe ",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":75,
          "x":0,
          "y":0
@@ -655,7 +655,7 @@
          "name":"placement_outline_primarySchool",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":75,
          "x":0,
          "y":0
