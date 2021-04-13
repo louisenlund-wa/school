@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+		body{
+			margin: 0px;
+		}
+		.container{
+			background-color: #fd8c8c;
+			width: 100%;
+		}
+		.map{
+			background-color: #8e8effaa;
+			position: relative;
+			width: fit-content;
+			overflow: hidden;
+		}
+		.map #map{
+			object-fit: contain;
+		}
+		.name{
+			position: absolute;
+		}
+		.name:hover{
+			z-index: 2;
+		}
+		.juniorenstufe{
+			top: 30%;
+			left: 50%;
+		}
+		.oberstufe {
+			top: 80%;
+			left: 40%;
+		}
+		.grundschule {
+			top: 19%;
+			left: 51%;
+		}
+		.name.ib {
+			top: 88%;
+			left: 7%;
+		}
+		.plus-mint {
+			top: 76%;
+			left: 19%;
+		}
+		.name a {
+		    font-family: Roboto, sans-serif;
+		    text-decoration: none;
+		    color: white;
+		    font-weight: 500;
+	        padding: 1em;
+		    position: relative;
+		    display: inline-block;
+		    z-index: 1;
+		}
+		.name a:hover{
+			text-shadow: 0px 0px 15px rgb(255 255 255);
+			animation: text-shake 1.5s ease-in-out infinite;
+		}
+		.name .abg{
+			content: '';
+			display: block;
+			height: 5em;
+			width: 110%;
+			background: #0000008f;
+			box-shadow: 0px 0px 20px 20px rgb(0 0 0 / 56%), 0px 0px 1px 0px rgb(0 0 0 / 30%) inset;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			border-radius: 45%;
+			transform: translate(-50%, -50%);
+		}
+		.name a:hover + .abg{	
+			height: 500vh;
+			width:	500vw;
+			transition: all 0.35s ease-in;
+		}
+		@keyframes text-shake {
+			/*25%  { transform: scale(0.9); }*/
+			65%  { transform: scale(1.4); }
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="map">
+			<img id="map" src="map.png">
+			<div class="name juniorenstufe"><a href="#">Campus Juniorenstufe</a><div class="abg"></div></div>
+			<div class="name oberstufe"><a href="#">Campus Oberstufe</a><div class="abg"></div></div>
+			<div class="name grundschule"><a href="#">Campus Grundschule</a><div class="abg"></div></div>
+			<div class="name ib"><a href="#">Campus IB</a><div class="abg"></div></div>
+			<div class="name plus-mint"><a href="#">Campus Plus-MINT</a><div class="abg"></div></div>
+		</div>
+	</div>
+</body>
+<script>
+	(function() {
+		var throttle = function(type, name, obj) {
+			obj = obj || window;
+			var running = false;
+			var func = function() {
+				if (running) { return; }
+				running = true;
+				requestAnimationFrame(function() {
+					obj.dispatchEvent(new CustomEvent(name));
+					running = false;
+				});
+			};
+			obj.addEventListener(type, func);
+		};
+
+		/* init - you can init any event */
+		throttle("resize", "optimizedResize");
+	})();
+	document.addEventListener( "DOMContentLoaded", function( event ) {
+	    var mapElem = document.querySelector('.map');
+	    var mapImg = mapElem.querySelector('#map');
+	    var imgSources = [];
+	    var map = false;
+	    
+	    if(mapImg){
+            imgSources.push(mapImg.src);
+	        preloadImages(imgSources);
+	    }
+
+	    function preloadImages(sources){
+	        var counter = 0;
+
+	        function onLoad() {
+	            counter++;
+	            if (counter == sources.length){
+	                map = new WAMap();
+	            }
+	        }
+
+	        for(var i=0; i < sources.length; i++){
+	            var img = document.createElement('img');
+	            img.onload = img.onerror = onLoad;
+	            img.src = sources[i];
+	        }
+	    }
+
+	    function WAMap(){
+	    	var containerElem = document.querySelector('.container');
+	    	var mapElem = document.querySelector('.map');
+	    	var mapImg = mapElem.querySelector('#map');
+	    	var customCss = '';
+
+	    	// window.addEventListener("optimizedResize", resizeMap);
+
+	    	// resizeMap();
+
+	    	function resizeMap(){
+	    		containerElem.style.width = window.innerWidth + 'px';
+	    		containerElem.style.height = window.innerHeight + 'px';
+	    		mapElem.style.width = window.innerWidth + 'px';
+	    		mapElem.style.height = window.innerHeight + 'px';
+	    		mapImg.style.width = mapElem.offsetWidth + 'px';
+	    		mapImg.style.height = mapElem.offsetHeight + 'px';
+	    	}
+	    	function setStyles(){
+				var style = document.createElement('style');
+				style.innerHTML =
+					'.some-element {' +
+						'color: purple;' +
+						'background-color: #e5e5e5;' +
+						'height: 150px;' +
+					'}' + customCss;
+
+				// Get the first script tag
+				var ref = document.querySelector('script');
+
+				// Insert our new styles before the first script tag
+				ref.parentNode.insertBefore(style, ref);
+	    	}
+	    	console.log('tut');
+	    }
+	
+	});
+</script>
+</html>
