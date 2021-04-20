@@ -534,6 +534,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -557,6 +562,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -580,6 +590,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -608,6 +623,11 @@
                  "name":"openWebsiteTrigger",
                  "type":"string",
                  "value":"onaction"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -631,6 +651,11 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -659,6 +684,11 @@
                  "name":"openWebsiteTrigger",
                  "type":"string",
                  "value":"onaction"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -682,6 +712,11 @@
                  "name":"openWebsiteTrigger",
                  "type":"string",
                  "value":"onaction"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -700,6 +735,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Schleiwasser-Forschungsprojekt-track.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -718,6 +758,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Sch\u00fclerwettbewerbe.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -736,6 +781,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Robocup.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -777,6 +827,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Abschlussjahrgang.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -795,6 +850,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/THW.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -813,6 +873,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/plus-MINT_Video_der_Film.html"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -831,6 +896,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/bauen.louisenlund.de\/wohnen"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -849,6 +919,11 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/bauen.louisenlund.de\/vision"
+                }, 
+                {
+                 "name":"silent",
+                 "type":"bool",
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
