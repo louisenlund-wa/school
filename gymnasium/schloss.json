@@ -490,7 +490,12 @@
          "opacity":0,
          "properties":[
                 {
-                 "name":"playAudioLoop",
+                 "name":"audioLoop",
+                 "type":"bool",
+                 "value":true
+                }, 
+                {
+                 "name":"playAudio",
                  "type":"string",
                  "value":"..\/assets\/LL_wasserundv\u00f6gel.mp3"
                 }],
@@ -508,7 +513,12 @@
          "opacity":0,
          "properties":[
                 {
-                 "name":"playAudioLoop",
+                 "name":"audioLoop",
+                 "type":"bool",
+                 "value":true
+                }, 
+                {
+                 "name":"playAudio",
                  "type":"string",
                  "value":"..\/assets\/llund v\u00f6gel 1.mp3"
                 }],
