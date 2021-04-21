@@ -30,6 +30,9 @@ main .youtube{
 	height: 25vw;
     width: 100%;
     min-height: 350px;
+    max-width: 650px;
+    margin: auto;
+    display: block;
 }
 main a{
 	color: #cd1329;
