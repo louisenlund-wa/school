@@ -444,7 +444,7 @@
                 {
                  "name":"exitUrl",
                  "type":"string",
-                 "value":"hof.json#schloss"
+                 "value":"https:\/\/play.workadventu.re\/@\/stiftung-louisenlund\/gymnasium\/hof#schloss"
                 }],
          "type":"tilelayer",
          "visible":true,
