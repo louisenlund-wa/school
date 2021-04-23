@@ -9,12 +9,12 @@
 		body{
 			margin: 0px;
 		}
-		.container{
-			background-color: #fd8c8c;
+		.viewPort{
+			/*background-color: #fd8c8c;*/
 			width: 100%;
 		}
 		.map{
-			background-color: #8e8effaa;
+			/*background-color: #8e8effaa;*/
 			/*background-color: #2f8234;*/
 			position: relative;
 			width: fit-content;
@@ -25,29 +25,30 @@
 		}
 		.name{
 			position: absolute;
+			transform: translate(-50%, -50%);
 		}
 		.name:hover{
 			z-index: 2;
 		}
 		.juniorenstufe{
 			top: 30%;
-			left: 50%;
+			left: 52%;
 		}
 		.oberstufe {
-			top: 80%;
-			left: 40%;
+			top: 82%;
+			left: 43.5%;
 		}
 		.grundschule {
 			top: 19%;
-			left: 51%;
+			left: 55%;
 		}
 		.name.ib {
-			top: 88%;
-			left: 7%;
+			top: 89%;
+			left: 12%;
 		}
 		.plus-mint {
 			top: 76%;
-			left: 19%;
+			left: 21%;
 		}
 		.name a {
 		    font-family: Roboto, sans-serif;
@@ -85,17 +86,23 @@
 			/*25%  { transform: scale(0.9); }*/
 			65%  { transform: scale(1.4); }
 		}
+		.map.draging{
+			cursor: move;
+		}
+		.map.backing{
+			transition: all 0.25s ease-out;
+		}
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="viewPort">
 		<div class="map">
-			<img id="map" src="map.png">
-			<div class="name juniorenstufe"><a href="#">Campus Juniorenstufe</a><div class="abg"></div></div>
-			<div class="name oberstufe"><a href="#">Campus Oberstufe</a><div class="abg"></div></div>
-			<div class="name grundschule"><a href="#">Campus Grundschule</a><div class="abg"></div></div>
-			<div class="name ib"><a href="#">Campus IB</a><div class="abg"></div></div>
-			<div class="name plus-mint"><a href="#">Campus Plus-MINT</a><div class="abg"></div></div>
+			<img id="map" src="map.jpg">
+			<!-- <div class="name juniorenstufe"><a href="#">Infostation  Juniorenstufe</a><div class="abg"></div></div> -->
+			<div class="name oberstufe"><a href="https://play.workadventu.re/@/stiftung-louisenlund/gymnasium/schloss">Infostation  Oberstufe</a><div class="abg"></div></div>
+			<!-- <div class="name grundschule"><a href="#">Infostation  Grundschule</a><div class="abg"></div></div> -->
+			<div class="name ib"><a href="https://play.workadventu.re/@/stiftung-louisenlund/gymnasium/ib">Infostation  IB</a><div class="abg"></div></div>
+			<!-- <div class="name plus-mint"><a href="#">Infostation  Plus-MINT</a><div class="abg"></div></div> -->
 		</div>
 	</div>
 </body>
@@ -104,19 +111,21 @@
 		var throttle = function(type, name, obj) {
 			obj = obj || window;
 			var running = false;
-			var func = function() {
+			var func = function(e) {
 				if (running) { return; }
 				running = true;
 				requestAnimationFrame(function() {
-					obj.dispatchEvent(new CustomEvent(name));
+					obj.dispatchEvent(new CustomEvent(name, {detail: e}) );
 					running = false;
 				});
 			};
 			obj.addEventListener(type, func);
 		};
 
+		var mapElem = document.querySelector('.map');
 		/* init - you can init any event */
 		throttle("resize", "optimizedResize");
+		throttle("mousemove", "optimizedMousemove", mapElem);
 	})();
 	document.addEventListener( "DOMContentLoaded", function( event ) {
 	    var mapElem = document.querySelector('.map');
@@ -147,30 +156,129 @@
 	    }
 
 	    function WAMap(){
-	    	var containerElem = document.querySelector('.container');
+	    	var viewPortElem = document.querySelector('.viewPort');
 	    	var mapElem = document.querySelector('.map');
 	    	var mapImg = mapElem.querySelector('#map');
 	    	var customCss = '';
 
-	    	// window.addEventListener("optimizedResize", resizeMap);
+	    	var isDraging = false;
+	    	var mapDragingSpeed = 5;
+	    	var mapTop = 0;
+	    	var mapLeft = 0;
 
-	    	// resizeMap();
+	    	//init
+	    	setStyles();
+	    	resizeMap();
+
+	    	//handlers
+	    	window.addEventListener("optimizedResize", resizeMap);
+	    	mapElem.addEventListener("mousedown", lmbController);
+	    	mapElem.addEventListener("mouseup", lmbController);
+	    	window.addEventListener("mouseup", lmbController);
+	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
+
+
+	    	function  mapPositionDraw(){
+	    		mapElem.style.top = mapTop + 'px';
+	    		mapElem.style.left = mapLeft + 'px';
+	    	}
+
+	    	function dragingMap(e){
+	    		if (isDraging === true) {
+	    			mapTop += e.detail.movementY*mapDragingSpeed;
+	    			mapLeft += e.detail.movementX*mapDragingSpeed;
+	    			mapPositionDraw();
+	    		}
+	    	}
+
+	    	function movementRestrictions(){
+	    		var offsetLeft = -(mapElem.offsetWidth - viewPortElem.offsetWidth);
+	    		var offsetTop = -(mapElem.offsetHeight - viewPortElem.offsetHeight);
+	    		if(mapLeft > 0){
+	    			mapLeft = 0;
+	    			backingAnimation();
+	    		}else if (mapLeft < offsetLeft){
+	    			mapLeft = offsetLeft;
+	    			backingAnimation();
+	    		}
+	    		if(mapTop > 0){
+	    			mapTop = 0;
+	    			backingAnimation();
+	    		}else if (mapTop < offsetTop){
+	    			mapTop = offsetTop;
+	    			backingAnimation();
+	    		}
+	    		mapPositionDraw();
+	    	}
+
+	    	function backingAnimation(){
+	    		mapElem.classList.add('backing');
+	    		
+	    		setTimeout(function(mapElem){
+	    			mapElem.classList.remove('backing');
+	    		}, 250, mapElem);
+	    	}
+
+	    	function lmbController(e){
+	    		// Handle different event models
+			    var e = e || window.event;
+			    
+			    var btnCode;
+
+			    if ('object' === typeof e) {
+			        btnCode = e.button;
+
+			        switch (btnCode) {
+			            case 0:
+			                // console.log('Нажата левая кнопка.');
+
+			                switch (e.type) {
+			                	// adding mouse cursore
+			                	case 'mousedown':
+			                		e.preventDefault();
+				                	isDraging = true;
+				                	mapElem.classList.add('draging');
+				                	break;
+			                	case 'mouseup':
+				                	isDraging = false;
+				                	mapElem.classList.remove('draging');
+				                	movementRestrictions();
+				                	break;
+			                	default:
+			                		console.log('Undefined type: ' + e.type);
+			                }
+			            break;
+
+			            case 1:
+			                console.log('Нажата средняя кнопка или колёсико.');
+			            break;
+
+			            case 2:
+			                console.log('Нажата правая кнопка.');
+			            break;
+
+			            default:
+			                console.log('Неопределённое событие: ' + btnCode);
+			        }
+			    }
+	    	}
 
 	    	function resizeMap(){
-	    		containerElem.style.width = window.innerWidth + 'px';
-	    		containerElem.style.height = window.innerHeight + 'px';
-	    		mapElem.style.width = window.innerWidth + 'px';
-	    		mapElem.style.height = window.innerHeight + 'px';
-	    		mapImg.style.width = mapElem.offsetWidth + 'px';
-	    		mapImg.style.height = mapElem.offsetHeight + 'px';
+	    		viewPortElem.style.width = window.innerWidth + 'px';
+	    		viewPortElem.style.height = window.innerHeight + 'px';
+	    		mapPositionDraw();
+	    		// mapElem.style.width = window.innerWidth + 'px';
+	    		// mapElem.style.height = window.innerHeight + 'px';
+	    		// mapImg.style.width = mapElem.offsetWidth + 'px';
+	    		// mapImg.style.height = mapElem.offsetHeight + 'px';
 	    	}
+
 	    	function setStyles(){
 				var style = document.createElement('style');
 				style.innerHTML =
-					'.some-element {' +
-						'color: purple;' +
-						'background-color: #e5e5e5;' +
-						'height: 150px;' +
+					'.viewPort {' +
+						'overflow: hidden;' +
+						'position: relative;' +
 					'}' + customCss;
 
 				// Get the first script tag
@@ -179,6 +287,7 @@
 				// Insert our new styles before the first script tag
 				ref.parentNode.insertBefore(style, ref);
 	    	}
+
 	    	console.log('tut');
 	    }
 	
