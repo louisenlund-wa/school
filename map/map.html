@@ -98,11 +98,11 @@
 	<div class="viewPort">
 		<div class="map">
 			<img id="map" src="map.png">
-			<!-- <div class="name juniorenstufe"><a href="#">Infostation  Juniorenstufe</a><div class="abg"></div></div> -->
+			<!-- <div class="name juniorenstufe"><a href="#" target="_top">Infostation  Juniorenstufe</a><div class="abg"></div></div> -->
 			<div class="name oberstufe"><a href="https://play.workadventu.re/@/stiftung-louisenlund/gymnasium/schloss" target="_top">Infostation  Oberstufe</a><div class="abg"></div></div>
-			<!-- <div class="name grundschule"><a href="#">Infostation  Grundschule</a><div class="abg"></div></div> -->
+			<!-- <div class="name grundschule"><a href="#" target="_top">Infostation  Grundschule</a><div class="abg"></div></div> -->
 			<div class="name ib"><a href="https://play.workadventu.re/@/stiftung-louisenlund/gymnasium/ib" target="_top">Infostation  IB</a><div class="abg"></div></div>
-			<!-- <div class="name plus-mint"><a href="#">Infostation  Plus-MINT</a><div class="abg"></div></div> -->
+			<!-- <div class="name plus-mint"><a href="#" target="_top">Infostation  Plus-MINT</a><div class="abg"></div></div> -->
 		</div>
 	</div>
 </body>
@@ -132,6 +132,7 @@
 	    var mapImg = mapElem.querySelector('#map');
 	    var imgSources = [];
 	    var map = false;
+
 	    
 	    if(mapImg){
             imgSources.push(mapImg.src);
@@ -176,6 +177,7 @@
 	    	mapElem.addEventListener("mouseup", lmbController);
 	    	window.addEventListener("mouseup", lmbController);
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
+	    	window.top.addEventListener('mousemove', dragingMap);
 	    	//add mousleave to disable draging
 	    	//or iframe parent windows movement
 
