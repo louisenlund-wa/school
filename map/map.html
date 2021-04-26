@@ -177,9 +177,7 @@
 	    	mapElem.addEventListener("mouseup", lmbController);
 	    	window.addEventListener("mouseup", lmbController);
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
-	    	window.top.addEventListener('mousemove', dragingMap);
-	    	//add mousleave to disable draging
-	    	//or iframe parent windows movement
+	    	mapElem.addEventListener('mouseleave', disableDraging);
 
 
 	    	function  mapPositionDraw(){
@@ -223,6 +221,16 @@
 	    		}, 250, mapElem);
 	    	}
 
+	    	function enableDraging(){
+	    		isDraging = true;
+	    		mapElem.classList.add('draging');
+	    	}
+	    	function disableDraging(){
+	    		isDraging = false;
+	    		mapElem.classList.remove('draging');
+	    		movementRestrictions();
+	    	}
+
 	    	function lmbController(e){
 	    		// Handle different event models
 			    var e = e || window.event;
@@ -240,13 +248,10 @@
 			                	// adding mouse cursore
 			                	case 'mousedown':
 			                		e.preventDefault();
-				                	isDraging = true;
-				                	mapElem.classList.add('draging');
+			                		enableDraging();
 				                	break;
 			                	case 'mouseup':
-				                	isDraging = false;
-				                	mapElem.classList.remove('draging');
-				                	movementRestrictions();
+			                		disableDraging();
 				                	break;
 			                	default:
 			                		console.log('Undefined type: ' + e.type);
