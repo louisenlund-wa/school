@@ -167,9 +167,15 @@
 	    	var mapTop = 0;
 	    	var mapLeft = 0;
 
+	    	var mapMaxWidth = mapElem.offsetWidth;
+	    	var mapMaxHeight = mapElem.offsetHeight;
+	    	var mapWidth = mapMaxWidth;
+	    	var mapHeight = mapMaxHeight;
+
 	    	//init
 	    	setStyles();
 	    	resizeMap();
+	    	init();
 
 	    	//handlers
 	    	window.addEventListener("optimizedResize", resizeMap);
@@ -179,10 +185,94 @@
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
 	    	mapElem.addEventListener('mouseleave', disableDraging);
 
+	    	window.addEventListener('wheel', zoom);
+
+	    	var scale = 1;
+	    	function zoom(event) {
+	    		// event.preventDefault();
+
+	    		// console.dir(event.deltaY);
+	    		// console.dir(event.wheelDelta);
+
+	    		scale = event.wheelDelta*0.01;
+
+	    		if(scale > 0){
+		    		mapWidth *= scale;
+		    		mapHeight *= scale;
+		    	}else{
+		    		scale *= -1;
+		    		mapWidth /= scale;
+		    		mapHeight /= scale;
+		    	}
+
+	    		console.log(scale);
+	    		console.log(mapWidth);
+	    		console.log(mapHeight);
+
+	    		zoomRestrictions();
+  				mapZoomDraw();
+
+  				//добавить позиционировани в зависимости от курсора
+  				//убрать возможность перемещать при максимальном масштабе?
+
+  				// mapPositionDraw();
+  			}
+
+	    	function zoomRestrictions(){
+	    		var mapMinWidth = mapElem.offsetWidth - viewPortElem.offsetWidth;
+	    		if(mapWidth >= mapMaxWidth || mapHeight >= mapMaxHeight){
+	    			mapWidth = mapMaxWidth;
+	    			mapHeight = mapMaxHeight;
+	    		}else if(mapWidth <= viewPortElem.offsetWidth && mapHeight <= viewPortElem.offsetHeight){
+	    			setMinZoom();
+	    		}
+	    		mapZoomDraw();
+	    	}
+
+	    	function setMinZoom(){
+	    		var biggestSide = findBiggestSide();
+	    		console.dir(biggestSide);
+	    		var coficient = 1;
+	    		if(biggestSide == 'width'){
+	    			console.dir('zoom corect width');
+	    			coficient = viewPortElem.offsetWidth/mapWidth;
+	    			mapWidth *= coficient;
+	    			mapHeight *= coficient;
+	    		}else if(biggestSide == 'height'){
+	    			console.dir('zoom corect height');
+	    			coficient = viewPortElem.offsetHeight/mapHeight;
+	    			mapHeight *= coficient;
+	    			mapWidth *= coficient;
+	    		}
+	    		mapZoomDraw();
+	    	}
+
+	    	function findBiggestSide(){
+	    		var width = viewPortElem.offsetWidth - mapWidth;
+	    		var height = viewPortElem.offsetHeight - mapHeight;
+	    		console.dir(width);
+	    		console.dir(height);
+	    		if(width >= 0 && height >= 0){
+	    			return width <= height ? 'width' : 'height';
+	    		}else if(width < 0 && height >= 0){
+	    			return 'width';
+	    		}else if(width >= 0 && height < 0){
+	    			return 'height';
+	    		}else if(width < 0 && height < 0){
+	    			return width <= height ? 'width' : 'height';
+	    		}
+	    	}
 
 	    	function  mapPositionDraw(){
 	    		mapElem.style.top = mapTop + 'px';
 	    		mapElem.style.left = mapLeft + 'px';
+	    	}
+
+	    	function mapZoomDraw(){
+	    		mapElem.style.width = mapWidth + 'px';
+	    		mapElem.style.height = mapHeight + 'px';
+	    		mapImg.style.width = mapWidth + 'px';
+	    		mapImg.style.height = mapHeight + 'px';
 	    	}
 
 	    	function dragingMap(e){
@@ -196,6 +286,11 @@
 	    	function movementRestrictions(){
 	    		var offsetLeft = -(mapElem.offsetWidth - viewPortElem.offsetWidth);
 	    		var offsetTop = -(mapElem.offsetHeight - viewPortElem.offsetHeight);
+	    		//disable when scale is to small
+	    		if(offsetLeft >= 0 || offsetTop >= 0){
+	    			return;
+	    		}
+	    		console.dir(offsetTop);
 	    		if(mapLeft > 0){
 	    			mapLeft = 0;
 	    			backingAnimation();
@@ -275,11 +370,17 @@
 	    	function resizeMap(){
 	    		viewPortElem.style.width = window.innerWidth + 'px';
 	    		viewPortElem.style.height = window.innerHeight + 'px';
+	    		zoomRestrictions();
+	    		movementRestrictions();
+	    	}
+
+	    	function init(){
 	    		mapPositionDraw();
-	    		// mapElem.style.width = window.innerWidth + 'px';
-	    		// mapElem.style.height = window.innerHeight + 'px';
-	    		// mapImg.style.width = mapElem.offsetWidth + 'px';
-	    		// mapImg.style.height = mapElem.offsetHeight + 'px';
+	    		mapWidth = mapElem.offsetWidth;
+	    		mapHeight = mapElem.offsetHeight;
+	    		mapZoomDraw();
+	    		//start with full zoomOut
+	    		setMinZoom();
 	    	}
 
 	    	function setStyles(){
