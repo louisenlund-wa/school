@@ -185,7 +185,9 @@
 	    	mapElem.addEventListener("mouseup", lmbController);
 	    	window.addEventListener("mouseup", lmbController);
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
-	    	mapElem.addEventListener('mouseleave', disableDragingMouseLeave);
+	    	mapElem.addEventListener('mouseleave', disableDraging);
+	    	// mapElem.addEventListener('mouseleave', disableDragingMouseLeave);
+	    	// window.addEventListener('mouseleave', disableDraging);
 
 	    	window.addEventListener('wheel', zoom);
 
@@ -450,7 +452,7 @@
 				ref.parentNode.insertBefore(style, ref);
 	    	}
 
-	    	console.log('tut');
+	    	// console.log('tut');
 	    }
 	
 	});
