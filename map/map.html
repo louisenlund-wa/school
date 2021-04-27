@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Document</title>
 	<style type="text/css">
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
@@ -11,7 +11,7 @@
 		}
 		.viewPort{
 			/*background-color: #fd8c8c;*/
-			width: 100%;
+			width: 100vw;
 		}
 		.map{
 			/*background-color: #8e8effaa;*/
@@ -97,7 +97,7 @@
 <body>
 	<div class="viewPort">
 		<div class="map">
-			<img id="map" src="map.png">
+			<img id="map" src="map.jpg">
 			<!-- <div class="name juniorenstufe"><a href="#" target="_top">Infostation  Juniorenstufe</a><div class="abg"></div></div> -->
 			<div class="name oberstufe"><a href="https://play.workadventu.re/@/stiftung-louisenlund/gymnasium/schloss" target="_top">Infostation  Oberstufe</a><div class="abg"></div></div>
 			<!-- <div class="name grundschule"><a href="#" target="_top">Infostation  Grundschule</a><div class="abg"></div></div> -->
@@ -167,6 +167,8 @@
 	    	var mapTop = 0;
 	    	var mapLeft = 0;
 
+	    	var scaleStep = 1.5;
+	    	var scaleCoefficient = 1;
 	    	var mapMaxWidth = mapElem.offsetWidth;
 	    	var mapMaxHeight = mapElem.offsetHeight;
 	    	var mapWidth = mapMaxWidth;
@@ -183,75 +185,109 @@
 	    	mapElem.addEventListener("mouseup", lmbController);
 	    	window.addEventListener("mouseup", lmbController);
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
-	    	mapElem.addEventListener('mouseleave', disableDraging);
+	    	mapElem.addEventListener('mouseleave', disableDragingMouseLeave);
 
 	    	window.addEventListener('wheel', zoom);
 
-	    	var scale = 1;
+	    	
 	    	function zoom(event) {
 	    		// event.preventDefault();
+	    		var prevMapWidth = mapWidth;
+	    		var prevMapHeight = mapHeight;
+	    		var scale = event.wheelDelta*0.01;
 
-	    		// console.dir(event.deltaY);
-	    		// console.dir(event.wheelDelta);
-
-	    		scale = event.wheelDelta*0.01;
-
+	    		//zoomIn
 	    		if(scale > 0){
-		    		mapWidth *= scale;
-		    		mapHeight *= scale;
-		    	}else{
-		    		scale *= -1;
-		    		mapWidth /= scale;
-		    		mapHeight /= scale;
+	    			// console.dir('zoomIn');
+		    		mapWidth *= scaleStep;
+		    		mapHeight *= scaleStep;
+		    	}else{//zoomOut
+		    		// console.dir('zoomOut');
+		    		mapWidth /= scaleStep;
+		    		mapHeight /= scaleStep;
 		    	}
 
-	    		console.log(scale);
-	    		console.log(mapWidth);
-	    		console.log(mapHeight);
-
-	    		zoomRestrictions();
+				zoomRestrictions();
+	    		scaleCoefficient = mapElem.offsetWidth/mapWidth;
   				mapZoomDraw();
+  				
+  				//if map smaller that viewport
+	    		if( mapElem.offsetWidth <= viewPortElem.offsetWidth || mapElem.offsetHeight <= viewPortElem.offsetHeight){
+	    			if( mapElem.offsetWidth <= viewPortElem.offsetWidth ){
+	    				mapLeft = (viewPortElem.offsetWidth-mapWidth)/2;
+	    			}else if(mapElem.offsetHeight <= viewPortElem.offsetHeight){
+	    				mapTop = (viewPortElem.offsetHeight-mapHeight)/2;
+	    			}
+	    		}else if(prevMapWidth == mapWidth || prevMapHeight == mapHeight){//if scale don't change
+	    		}else{//if normal scale
+	    			var marginLeftInZoom = 0
+	    			var halfViewPortInZoomW = 0;
+	    			var marginTopInZoom = 0
+	    			var halfViewPortInZoomH = 0;
 
-  				//добавить позиционировани в зависимости от курсора
-  				//убрать возможность перемещать при максимальном масштабе?
+	    			//maybe if replace viewPortElem.offsetWidth/2 in some poinst to the event.x it will be scroll in to the mouse
+	    			
+	    			//zoomIn
+	    			if(scale > 0){
+	    				marginLeftInZoom = mapLeft/scaleCoefficient;
+	    				halfViewPortInZoomW = (viewPortElem.offsetWidth/2)/scaleCoefficient - viewPortElem.offsetWidth/2;
+	    				mapLeft = marginLeftInZoom - halfViewPortInZoomW;
 
-  				// mapPositionDraw();
+	    				marginTopInZoom = mapTop/scaleCoefficient;
+	    				halfViewPortInZoomH = (viewPortElem.offsetHeight/2)/scaleCoefficient - viewPortElem.offsetHeight/2;
+	    				mapTop = marginTopInZoom - halfViewPortInZoomH;
+    				}else{//zoomOut
+	    				marginLeftInZoom = mapLeft/scaleCoefficient;
+	    				halfViewPortInZoomW = viewPortElem.offsetWidth/2 - (viewPortElem.offsetWidth/2)/scaleCoefficient;
+	    				mapLeft = marginLeftInZoom + halfViewPortInZoomW;
+
+	    				marginTopInZoom= mapTop/scaleCoefficient;
+	    				halfViewPortInZoomH = viewPortElem.offsetHeight/2 - (viewPortElem.offsetHeight/2)/scaleCoefficient;
+	    				mapTop = marginTopInZoom + halfViewPortInZoomH;
+
+    				}
+	    		}
+  				mapPositionDraw();
   			}
 
 	    	function zoomRestrictions(){
-	    		var mapMinWidth = mapElem.offsetWidth - viewPortElem.offsetWidth;
 	    		if(mapWidth >= mapMaxWidth || mapHeight >= mapMaxHeight){
 	    			mapWidth = mapMaxWidth;
 	    			mapHeight = mapMaxHeight;
 	    		}else if(mapWidth <= viewPortElem.offsetWidth && mapHeight <= viewPortElem.offsetHeight){
 	    			setMinZoom();
 	    		}
-	    		mapZoomDraw();
 	    	}
 
 	    	function setMinZoom(){
 	    		var biggestSide = findBiggestSide();
-	    		console.dir(biggestSide);
 	    		var coficient = 1;
 	    		if(biggestSide == 'width'){
-	    			console.dir('zoom corect width');
+	    			// console.dir('zoom corect width');
 	    			coficient = viewPortElem.offsetWidth/mapWidth;
 	    			mapWidth *= coficient;
 	    			mapHeight *= coficient;
+	    			//position
+	    			mapLeft = 0;
+	    			mapTop = (viewPortElem.offsetHeight-mapHeight)/2;
 	    		}else if(biggestSide == 'height'){
-	    			console.dir('zoom corect height');
+	    			// console.dir('zoom corect height');
+	    			//scale
 	    			coficient = viewPortElem.offsetHeight/mapHeight;
 	    			mapHeight *= coficient;
 	    			mapWidth *= coficient;
+	    			//position
+	    			mapTop = 0;
+	    			mapLeft = (viewPortElem.offsetWidth-mapWidth)/2;
 	    		}
 	    		mapZoomDraw();
+	    		mapPositionDraw();
 	    	}
 
 	    	function findBiggestSide(){
-	    		var width = viewPortElem.offsetWidth - mapWidth;
-	    		var height = viewPortElem.offsetHeight - mapHeight;
-	    		console.dir(width);
-	    		console.dir(height);
+	    		var width = viewPortElem.offsetWidth/mapWidth;
+	    		var height = viewPortElem.offsetHeight/mapHeight;
+    			
 	    		if(width >= 0 && height >= 0){
 	    			return width <= height ? 'width' : 'height';
 	    		}else if(width < 0 && height >= 0){
@@ -259,7 +295,7 @@
 	    		}else if(width >= 0 && height < 0){
 	    			return 'height';
 	    		}else if(width < 0 && height < 0){
-	    			return width <= height ? 'width' : 'height';
+	    			return Math.abs(width) <= Math.abs(height) ? 'width' : 'height';
 	    		}
 	    	}
 
@@ -288,9 +324,19 @@
 	    		var offsetTop = -(mapElem.offsetHeight - viewPortElem.offsetHeight);
 	    		//disable when scale is to small
 	    		if(offsetLeft >= 0 || offsetTop >= 0){
+	    			if( offsetTop == 0 ){
+	    				mapTop = 0;
+	    				mapLeft = (viewPortElem.offsetWidth-mapWidth)/2;
+	    				backingAnimation();
+	    			}else if(offsetLeft == 0){
+	    				mapTop = (viewPortElem.offsetHeight-mapHeight)/2;
+	    				mapLeft = 0;
+	    				backingAnimation();
+	    			}
+	    			mapPositionDraw();
 	    			return;
 	    		}
-	    		console.dir(offsetTop);
+
 	    		if(mapLeft > 0){
 	    			mapLeft = 0;
 	    			backingAnimation();
@@ -323,7 +369,12 @@
 	    	function disableDraging(){
 	    		isDraging = false;
 	    		mapElem.classList.remove('draging');
-	    		movementRestrictions();
+				movementRestrictions();
+	    	}
+				movementRestrictions();
+	    	function disableDragingMouseLeave(){
+	    		isDraging = false;
+	    		mapElem.classList.remove('draging');
 	    	}
 
 	    	function lmbController(e){
@@ -371,6 +422,7 @@
 	    		viewPortElem.style.width = window.innerWidth + 'px';
 	    		viewPortElem.style.height = window.innerHeight + 'px';
 	    		zoomRestrictions();
+	    		mapZoomDraw();
 	    		movementRestrictions();
 	    	}
 
