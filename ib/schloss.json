@@ -424,9 +424,19 @@
          "opacity":0,
          "properties":[
                 {
+                 "name":"openWebsite",
+                 "type":"string",
+                 "value":"https:\/\/www.youtube.com\/embed\/zYva5HF1liI?autoplay=1&origin=https:\/\/play.workadventu.re"
+                }, 
+                {
+                 "name":"openWebsitePolicy",
+                 "type":"string",
+                 "value":"fullscreen"
+                }, 
+                {
                  "name":"silent",
                  "type":"bool",
-                 "value":false
+                 "value":true
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -439,7 +449,7 @@
          "height":99,
          "id":78,
          "name":"damien",
-         "opacity":0,
+         "opacity":0.02,
          "properties":[
                 {
                  "name":"startLayer",
