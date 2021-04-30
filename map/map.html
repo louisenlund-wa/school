@@ -214,7 +214,7 @@
 	    		scaleCoefficient = mapElem.offsetWidth/mapWidth;
   				mapZoomDraw();
 
-  				//change coefitien for scaling
+  				//change coefitien for draging
     			mapDragingSpeedCoef = Math.min(mapWidth/mapMaxWidth + 0.3, 1);
   				
   				//if map smaller that viewport
@@ -286,6 +286,8 @@
 	    			mapTop = 0;
 	    			mapLeft = (viewPortElem.offsetWidth-mapWidth)/2;
 	    		}
+	    		//change coefitien for draging
+    			mapDragingSpeedCoef = Math.min(mapWidth/mapMaxWidth + 0.3, 1);
 	    		mapZoomDraw();
 	    		mapPositionDraw();
 	    	}
