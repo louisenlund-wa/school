@@ -164,6 +164,7 @@
 
 	    	var isDraging = false;
 	    	var mapDragingSpeed = 5;
+	    	var mapDragingSpeedCoef = 1;
 	    	var mapTop = 0;
 	    	var mapLeft = 0;
 
@@ -212,6 +213,9 @@
 				zoomRestrictions();
 	    		scaleCoefficient = mapElem.offsetWidth/mapWidth;
   				mapZoomDraw();
+
+  				//change coefitien for scaling
+    			mapDragingSpeedCoef = Math.min(mapWidth/mapMaxWidth + 0.3, 1);
   				
   				//if map smaller that viewport
 	    		if( mapElem.offsetWidth <= viewPortElem.offsetWidth || mapElem.offsetHeight <= viewPortElem.offsetHeight){
@@ -315,8 +319,8 @@
 
 	    	function dragingMap(e){
 	    		if (isDraging === true) {
-	    			mapTop += e.detail.movementY*mapDragingSpeed;
-	    			mapLeft += e.detail.movementX*mapDragingSpeed;
+	    			mapTop += e.detail.movementY*mapDragingSpeed*mapDragingSpeedCoef;
+	    			mapLeft += e.detail.movementX*mapDragingSpeed*mapDragingSpeedCoef;
 	    			mapPositionDraw();
 	    		}
 	    	}
