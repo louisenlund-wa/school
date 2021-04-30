@@ -745,11 +745,6 @@
                  "value":"fullscreen"
                 }, 
                 {
-                 "name":"openWebsiteTrigger",
-                 "type":"string",
-                 "value":"onaction"
-                }, 
-                {
                  "name":"silent",
                  "type":"bool",
                  "value":true
@@ -771,11 +766,6 @@
                  "name":"openWebsite",
                  "type":"string",
                  "value":"https:\/\/louisenlund-wa.github.io\/school\/iframes\/Hafenfest-Schleitaufe.html"
-                }, 
-                {
-                 "name":"openWebsiteTrigger",
-                 "type":"string",
-                 "value":"onaction"
                 }, 
                 {
                  "name":"silent",

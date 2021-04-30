@@ -493,11 +493,6 @@
                  "value":"fullscreen"
                 }, 
                 {
-                 "name":"openWebsiteTrigger",
-                 "type":"string",
-                 "value":"onaction"
-                }, 
-                {
                  "name":"silent",
                  "type":"bool",
                  "value":true
@@ -524,11 +519,6 @@
                  "name":"openWebsitePolicy",
                  "type":"string",
                  "value":"fullscreen"
-                }, 
-                {
-                 "name":"openWebsiteTrigger",
-                 "type":"string",
-                 "value":"onaction"
                 }, 
                 {
                  "name":"silent",
