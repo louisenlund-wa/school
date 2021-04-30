@@ -1176,7 +1176,7 @@
          "height":99,
          "id":84,
          "name":"iframe_minimap",
-         "opacity":0.56,
+         "opacity":0,
          "properties":[
                 {
                  "name":"openWebsite",
