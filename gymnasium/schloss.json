@@ -467,7 +467,7 @@
                 {
                  "name":"openWebsitePolicy",
                  "type":"string",
-                 "value":"fullscreen"
+                 "value":"autoplay; fullscreen"
                 }, 
                 {
                  "name":"silent",
