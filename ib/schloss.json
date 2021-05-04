@@ -426,7 +426,7 @@
                 {
                  "name":"openWebsite",
                  "type":"string",
-                 "value":"https%3A%2F%2Fwww.youtube.com%2Fembed%2FzYva5HF1liI%3Fautoplay%3D1%26origin%3Dhttps%3A%2F%2Fplay.workadventu.re"
+                 "value":"https:\/\/www.youtube.com\/embed\/zYva5HF1liI?autoplay=1&origin=https:\/\/play.workadventu.re"
                 }, 
                 {
                  "name":"openWebsitePolicy",
