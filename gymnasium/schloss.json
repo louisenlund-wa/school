@@ -606,17 +606,6 @@
          "id":33,
          "name":"audio_birds_water",
          "opacity":0,
-         "properties":[
-                {
-                 "name":"audioLoop",
-                 "type":"bool",
-                 "value":true
-                }, 
-                {
-                 "name":"playAudio",
-                 "type":"string",
-                 "value":"..\/assets\/LL_wasserundv\u00f6gel.mp3"
-                }],
          "type":"tilelayer",
          "visible":true,
          "width":200,
@@ -629,17 +618,6 @@
          "id":32,
          "name":"audio_birds",
          "opacity":0,
-         "properties":[
-                {
-                 "name":"audioLoop",
-                 "type":"bool",
-                 "value":true
-                }, 
-                {
-                 "name":"playAudio",
-                 "type":"string",
-                 "value":"..\/assets\/llund v\u00f6gel 1.mp3"
-                }],
          "type":"tilelayer",
          "visible":true,
          "width":200,
