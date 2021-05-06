@@ -8,6 +8,7 @@
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 		body{
 			margin: 0px;
+			height: 1200px;
 		}
 		.viewPort{
 			/*background-color: #fd8c8c;*/
@@ -192,9 +193,34 @@
 
 	    	window.addEventListener('wheel', zoom);
 
+	    	var mouseOnMap = false;
+	    	mapElem.addEventListener('mouseenter', function(e){mouseOnMap = true;});
+	    	mapElem.addEventListener('mouseleave', function(e){mouseOnMap = false;});
+	    	// modern Chrome requires { passive: false } when adding event
+			var supportsPassive = false;
+			try {
+			  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+			    get: function () { supportsPassive = true; } 
+			  }));
+			} catch(e) {}
+
+			var wheelOpt = supportsPassive ? { passive: false } : false;
+			var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+			window.addEventListener(wheelEvent, preventScroll, wheelOpt); // modern desktop
+			function preventScroll(e) {
+				if(mouseOnMap){
+					e.preventDefault();
+				}
+			}
+
+	    	window.addEventListener('scroll', function(e){
+	    		// e.preventDefault();
+	    		console.dir('lalala');
+	    	});
+
 	    	
 	    	function zoom(event) {
-	    		event.preventDefault();
+	    		if(!mouseOnMap) return;
 	    		var prevMapWidth = mapWidth;
 	    		var prevMapHeight = mapHeight;
 	    		var scale = event.wheelDelta*0.01;
