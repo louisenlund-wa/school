@@ -689,6 +689,11 @@
                  "name":"openWebsiteTrigger",
                  "type":"string",
                  "value":"onaction"
+                }, 
+                {
+                 "name":"openWebsiteTriggerMessage",
+                 "type":"string",
+                 "value":"Click on SPACE to open map"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -1719,12 +1724,12 @@
          "columns":2,
          "firstgid":25323,
          "image":"..\/assets\/signs\/event-stands.png",
-         "imageheight":1600,
+         "imageheight":1664,
          "imagewidth":64,
          "margin":0,
          "name":"event-stands",
          "spacing":0,
-         "tilecount":100,
+         "tilecount":104,
          "tileheight":32,
          "tilewidth":32
         }],
