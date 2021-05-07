@@ -17,7 +17,7 @@
 			/*background-color: #8e8effaa;*/
 			/*background-color: #2f8234;*/
 			position: relative;
-			width: fit-content;
+			width: max-content;
 			overflow: hidden;
 		}
 		.map #map{
@@ -190,7 +190,20 @@
 	    	// mapElem.addEventListener('mouseleave', disableDragingMouseLeave);
 	    	// window.addEventListener('mouseleave', disableDraging);
 
-	    	window.addEventListener('wheel', zoom);
+	    	if (window.addEventListener) {
+	    		if ('onwheel' in document) {
+			    	// IE9+, FF17+, Ch31+
+			    	window.addEventListener("wheel", zoom);
+			    } else if ('onmousewheel' in document) {
+			    	// устаревший вариант события
+			    	window.addEventListener("mousewheel", zoom);
+			    } else {
+			    	// Firefox < 17
+			    	window.addEventListener("MozMousePixelScroll", zoom);
+			    }
+			} else { // IE8-
+				window.attachEvent("onmousewheel", zoom);
+			}
 
 	    	var mouseOnMap = false;
 	    	mapElem.addEventListener('mouseenter', function(e){mouseOnMap = true;});
@@ -217,7 +230,10 @@
 	    		if(!mouseOnMap) return;
 	    		var prevMapWidth = mapWidth;
 	    		var prevMapHeight = mapHeight;
-	    		var scale = event.wheelDelta*0.01;
+	    		var scale = -1*event.deltaY || event.detail || event.wheelDelta;
+	    		// console.dir(event.deltaY);
+	    		// console.dir(event.detail);
+	    		// console.dir(event.wheelDelta);
 
 	    		//zoomIn
 	    		if(scale > 0){
