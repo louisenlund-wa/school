@@ -10,12 +10,9 @@
 			margin: 0px;
 		}
 		.viewPort{
-			/*background-color: #fd8c8c;*/
 			width: 100vw;
 		}
 		.map{
-			/*background-color: #8e8effaa;*/
-			/*background-color: #2f8234;*/
 			position: relative;
 			width: max-content;
 			overflow: hidden;
@@ -91,6 +88,26 @@
 		}
 		.map.backing{
 			transition: all 0.25s ease-out;
+		}
+		/*IE10+ */
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+			.map{
+				width: 6400px;
+			}
+			.name .abg{
+				background: rgba(0, 0, 0, 0.56);
+				box-shadow: 0px 0px 20px 20px rgba(0,0,0,0.55), inset 0px 0px 1px rgba(0,0,0,0.3);
+			}
+		}
+		/*Microsoft Edge 12-18 */
+		@supports (-ms-ime-align:auto) {
+			.map{
+				width: 6400px;
+			}
+			.name .abg{
+				background: rgba(0, 0, 0, 0.56);
+				box-shadow: 0px 0px 20px 20px rgba(0,0,0,0.55), inset 0px 0px 1px rgba(0,0,0,0.3);
+			}
 		}
 	</style>
 </head>
@@ -187,8 +204,20 @@
 	    	window.addEventListener("mouseup", lmbController);
 	    	mapElem.addEventListener('optimizedMousemove', dragingMap);
 	    	mapElem.addEventListener('mouseleave', disableDraging);
-	    	// mapElem.addEventListener('mouseleave', disableDragingMouseLeave);
-	    	// window.addEventListener('mouseleave', disableDraging);
+
+	    	//if IE
+			var supportsCustomEvents = false;
+			try {
+				window.addEventListener("testCustomEvents", function( ){
+					supportsCustomEvents = true; 
+				});
+				window.dispatchEvent(new CustomEvent('testCustomEvents') );
+			} catch(e) {supportsCustomEvents}
+
+			if(!supportsCustomEvents){
+				window.addEventListener("resize", resizeMap);
+				mapElem.addEventListener('mousemove', dragingMapNO);
+			}
 
 	    	if (window.addEventListener) {
 	    		if ('onwheel' in document) {
@@ -211,9 +240,9 @@
 	    	// modern Chrome requires { passive: false } when adding event
 			var supportsPassive = false;
 			try {
-			  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-			    get: function () { supportsPassive = true; } 
-			  }));
+				window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+					get: function () { supportsPassive = true; } 
+				}));
 			} catch(e) {}
 
 			var wheelOpt = supportsPassive ? { passive: false } : false;
@@ -363,6 +392,43 @@
 	    		}
 	    	}
 
+	    	//draging for IE11
+	    	var dragingIEx = false;
+	    	var dragingIEy = false;
+	    	function dragingMapNO(e){
+	    		if (isDraging === true) {
+	    			if(dragingIEx === false || dragingIEy === false){
+	    				dragingIEx = e.clientX;
+	    				dragingIEy = e.clientY;
+	    				return;
+	    			}
+
+	    			var movementY = 0;
+	    			if((dragingIEy - e.clientY) > 0) {
+	    				movementY = -1;
+	    			}else if((dragingIEy - e.clientY) < 0){
+	    				movementY = 1;
+	    			}else{
+	    				movementY = 0;
+	    			}
+	    			var movementX = 0;
+	    			if((dragingIEx - e.clientX) > 0) {
+	    				movementX = -1;
+	    			}else if((dragingIEx - e.clientX) < 0){
+	    				movementX = 1;
+	    			}else{
+	    				movementX = 0;
+	    			}
+
+	    			dragingIEx = e.clientX;
+    				dragingIEy = e.clientY;
+
+	    			mapTop += movementY*mapDragingSpeed*mapDragingSpeedCoef;
+	    			mapLeft += movementX*mapDragingSpeed*mapDragingSpeedCoef;
+	    			mapPositionDraw();
+	    		}
+	    	}
+
 	    	function movementRestrictions(){
 	    		var offsetLeft = -(mapElem.offsetWidth - viewPortElem.offsetWidth);
 	    		var offsetTop = -(mapElem.offsetHeight - viewPortElem.offsetHeight);
@@ -415,7 +481,7 @@
 	    		mapElem.classList.remove('draging');
 				movementRestrictions();
 	    	}
-				movementRestrictions();
+			
 	    	function disableDragingMouseLeave(){
 	    		isDraging = false;
 	    		mapElem.classList.remove('draging');
@@ -444,20 +510,20 @@
 			                		disableDraging();
 				                	break;
 			                	default:
-			                		console.log('Undefined type: ' + e.type);
+			                		// console.log('Undefined type: ' + e.type);
 			                }
 			            break;
 
 			            case 1:
-			                console.log('Нажата средняя кнопка или колёсико.');
+			                // console.log('Нажата средняя кнопка или колёсико.');
 			            break;
 
 			            case 2:
-			                console.log('Нажата правая кнопка.');
+			                // console.log('Нажата правая кнопка.');
 			            break;
 
 			            default:
-			                console.log('Неопределённое событие: ' + btnCode);
+			                // console.log('Неопределённое событие: ' + btnCode);
 			        }
 			    }
 	    	}
