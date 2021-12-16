@@ -18,14 +18,18 @@
 })();
 
 addEventListener("DOMContentLoaded", function () {
-
-    makeSlider();
+    let sliders = document.querySelectorAll('.slider');
+    for (var i = 0; i < sliders.length; i++) {
+        makeSlider(sliders[i]);
+    }
     
 });
 
 //preload images
-function makeSlider(sliderSelector = '.slider'){
-    var sliderElem = document.querySelector(sliderSelector);
+function makeSlider(sliderElem){
+    if(!sliderElem) sliderElem = document.querySelector('.slider');
+    //if no slide element don't make slider
+    if(!sliderElem) return;
     var slider = false;
     var imgSources = [];
     var imgs = sliderElem.querySelectorAll('img');
