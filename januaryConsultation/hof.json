@@ -496,7 +496,7 @@
                         {
                          "name":"default",
                          "type":"string",
-                         "value":"{{{snowing}}}"
+                         "value":"{{^snowing}}1{{\/snowing}}"
                         }],
                  "rotation":0,
                  "type":"variable",
@@ -1006,7 +1006,7 @@
                 {
                  "name":"visible",
                  "type":"string",
-                 "value":"{{{snowing}}}"
+                 "value":"{{^snowing}}1{{\/snowing}}"
                 }],
          "type":"tilelayer",
          "visible":true,
