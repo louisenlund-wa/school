@@ -457,10 +457,21 @@
          "draworder":"topdown",
          "id":2,
          "name":"floorLayer",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":82,
+         "name":"configuration",
          "objects":[
                 {
                  "height":0,
-                 "id":2,
+                 "id":8,
                  "name":"snowing",
                  "point":true,
                  "properties":[
@@ -473,8 +484,8 @@
                  "type":"variable",
                  "visible":true,
                  "width":0,
-                 "x":960.5,
-                 "y":1227.5
+                 "x":884,
+                 "y":25.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -973,15 +984,27 @@
          "id":70,
          "name":"snow",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"visible",
+                 "type":"string",
+                 "value":"{{{ snowing }}}"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":75,
          "x":0,
          "y":0
         }],
- "nextlayerid":82,
- "nextobjectid":3,
+ "nextlayerid":83,
+ "nextobjectid":9,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"script",
+         "type":"string",
+         "value":"https:\/\/unpkg.com\/@workadventure\/scripting-api-extra@^1\/dist\/bundle.js"
+        }],
  "renderorder":"right-down",
  "tiledversion":"2021.01.13",
  "tileheight":32,
