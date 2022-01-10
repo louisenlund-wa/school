@@ -496,7 +496,7 @@
                         {
                          "name":"default",
                          "type":"string",
-                         "value":"{{{ snowing }}}"
+                         "value":"{{{snowing}}}"
                         }],
                  "rotation":0,
                  "type":"variable",
