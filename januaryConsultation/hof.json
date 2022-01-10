@@ -486,24 +486,6 @@
                  "width":0,
                  "x":884,
                  "y":25.5
-                }, 
-                {
-                 "height":0,
-                 "id":9,
-                 "name":"show",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"default",
-                         "type":"string",
-                         "value":"{{^snowing}}1{{\/snowing}}"
-                        }],
-                 "rotation":0,
-                 "type":"variable",
-                 "visible":true,
-                 "width":0,
-                 "x":928,
-                 "y":18.5
                 }],
          "opacity":1,
          "type":"objectgroup",
