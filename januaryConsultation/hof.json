@@ -988,7 +988,7 @@
                 {
                  "name":"visible",
                  "type":"string",
-                 "value":"{{^snowing}}1{{\/snowing}}"
+                 "value":"{{#snowing}}1{{\/snowing}}"
                 }],
          "type":"tilelayer",
          "visible":true,
